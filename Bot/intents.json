@@ -1,0 +1,164 @@
+{
+    "intents": [
+        {
+            "tag": "saludo",
+            "patterns": [
+                "hola",
+                "que tal",
+                "cómo estás",
+                "saludos"
+            ],
+            "responses": [
+                "Hola!",
+                "Buenos dias!",
+                "¿Como estas?"
+            ]
+        },
+        {
+            "tag": "Intro",
+            "patterns": [
+                "Bien",
+                "Hola",
+                "Buenos dias"
+            ],
+            "responses": [
+                "Hola soy PyBot y te puedo ayudar con preguntas sencillas de Python"
+            ]
+        },
+        {
+            "tag": "nombre",
+            "patterns": [
+                "cómo es tu nombre",
+                "cómo te llamas"
+            ],
+            "responses": [
+                "Me llamo PyBot",
+                "Mi nombre es Botsito"
+            ]
+        },
+        {
+            "tag": "Proposito",
+            "patterns": [
+                "Que haces",
+                "Cual es tu función?"
+            ],
+            "responses": [
+                "Puedo ayudarte con cosas sencillas de python",
+                "Puedo serte util con cosas accerca de Python"
+            ]
+        },
+        {
+            "tag": "python_basico",
+            "patterns": [
+                "qué es Python",
+                "cómo aprendo Python",
+                "ventajas de Python"
+            ],
+            "responses": [
+                "Python es un lenguaje de programación interpretado y de alto nivel.",
+                "Puedes aprender Python a través de tutoriales en línea, cursos y practicando.",
+                "Algunas ventajas de Python incluyen su sintaxis clara, legibilidad y amplio soporte de bibliotecas."
+            ]
+        },
+        {
+            "tag": "funciones",
+            "patterns": [
+                "qué es funcion en Python",
+                "cómo definir una función",
+                "para qué sirven las funciones"
+            ],
+            "responses": [
+                "En Python, las funciones son bloques de código reutilizables que realizan una tarea específica.",
+                "Puedes definir una función usando la palabra clave `def` seguida del nombre de la función y sus parámetros.",
+                "Las funciones en Python son útiles para organizar y reutilizar código, facilitando el mantenimiento y la lectura del mismo."
+            ]
+        },
+        {
+            "tag": "why_funciones_python",
+            "patterns": [
+                "Cuales funciones hay en Python",
+                "ejemplos de funciones en Python",
+                "lista de funciones de Python"
+            ],
+            "responses": [
+                "Python es un lenguaje de programación interpretado y de alto nivel. Puedes aprender Python a través de tutoriales en línea, cursos y practicando. Algunas ventajas de Python incluyen su sintaxis clara, legibilidad y amplio soporte de bibliotecas. Python cuenta con diversas funciones que cubren una amplia gama de tareas. Algunos ejemplos de funciones en Python incluyen: 'print' para imprimir en la consola, 'len' para obtener la longitud de una lista o cadena, 'input' para recibir entrada del usuario, 'range' para generar secuencias de números, 'type' para obtener el tipo de un objeto. Estas son solo algunas de las muchas funciones disponibles en Python."
+            ]
+        },
+        {
+            "tag": "retorno_funcion",
+            "patterns": [
+                "qué es el retorno en una función",
+                "cómo usar 'return' en Python"
+            ],
+            "responses": [
+                "El retorno en una función es el valor que devuelve la función después de ejecutar su código.",
+                "Puedes usar la palabra clave 'return' seguida del valor que deseas devolver en una función."
+            ]
+        },
+        {
+            "tag": "funciones_incorporadas",
+            "patterns": [
+                "funciones incorporadas en Python",
+                "ejemplos de funciones integradas"
+            ],
+            "responses": [
+                "Python tiene muchas funciones incorporadas, como 'print', 'len', 'input', entre otras.",
+                "Por ejemplo, 'print' se utiliza para mostrar información en la consola, y 'len' para obtener la longitud de una lista o cadena."
+            ]
+        },
+        {
+            "tag": "bucles_decisiones",
+            "patterns": [
+                "bucles en Python",
+                "tipos de bucles",
+                "cómo funcionan las decisiones en Python"
+            ],
+            "responses": [
+                "En Python, los bucles permiten repetir bloques de código. Hay dos tipos principales de bucles:",
+                "- 'for': se utiliza para iterar sobre una secuencia (como una lista, tupla, diccionario, etc.).",
+                "- 'while': se ejecuta mientras se cumple una condición.",
+                "Las decisiones en Python se realizan con la declaración 'if', que permite ejecutar un bloque de código si una condición es verdadera.",
+                "También puedes utilizar 'elif' (else if) y 'else' para manejar múltiples condiciones."
+            ]
+        },
+        {
+            "tag": "clases_objetos_python",
+            "patterns": [
+                "qué son las clases y objetos en Python",
+                "cómo definir una clase en Python",
+                "para qué sirven las clases y objetos"
+            ],
+            "responses": [
+                "En Python, las clases son plantillas para crear objetos. Un objeto es una instancia de una clase.",
+                "Puedes definir una clase usando la palabra clave `class` seguida del nombre de la clase.",
+                "Las clases y objetos en Python son fundamentales para la programación orientada a objetos, permitiendo organizar y estructurar el código de manera eficiente."
+            ]
+        },
+        {
+            "tag": "listas_python",
+            "patterns": [
+                "qué son las listas en Python",
+                "cómo crear una lista",
+                "operaciones comunes con listas"
+            ],
+            "responses": [
+                "En Python, una lista es una estructura de datos que almacena elementos ordenados.",
+                "Puedes crear una lista utilizando corchetes `[]` y separando los elementos por comas.",
+                "Algunas operaciones comunes con listas incluyen agregar elementos, eliminar elementos, acceder a elementos por índice y realizar operaciones de slicing."
+            ]
+        },
+        {
+            "tag": "terminal_python",
+            "patterns": [
+                "cómo usar la terminal de Python",
+                "ejecutar un script desde la terminal",
+                "instalar paquetes con pip"
+            ],
+            "responses": [
+                "Puedes usar la terminal de Python ejecutando el comando `python`.",
+                "Para ejecutar un script desde la terminal, utiliza el comando `python nombre_del_script.py`.",
+                "Para instalar paquetes con pip, utiliza el comando `pip install nombre_del_paquete`."
+            ]
+        }
+    ]
+}

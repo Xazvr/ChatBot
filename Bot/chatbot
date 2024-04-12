@@ -1,0 +1,87 @@
+import random
+import json
+import pickle
+import numpy as np
+
+import nltk
+from nltk.stem import WordNetLemmatizer
+
+from keras.models import load_model
+
+lemmatizer = WordNetLemmatizer()
+
+# Importamos los archivos generados en el código anterior
+intents = json.loads(open('intents.json').read())
+words = pickle.load(open('words.pkl', 'rb'))
+classes = pickle.load(open('classes.pkl', 'rb'))
+model = load_model('chatbot_model.h5')
+
+# Pasamos las palabras de la oración a su forma raíz
+def clean_up_sentence(sentence):
+    sentence_words = nltk.word_tokenize(sentence)
+    sentence_words = [lemmatizer.lemmatize(word) for word in sentence_words]
+    return sentence_words
+
+# Convertimos la información a unos y ceros según si están presentes en los patrones
+def bag_of_words(sentence):
+    sentence_words = clean_up_sentence(sentence)
+    bag = [0] * len(words)
+    for w in sentence_words:
+        for i, word in enumerate(words):
+            if word == w:
+                bag[i] = 1
+    return np.array(bag)
+
+# Predecir la categoría y obtener todos los índices de patrones coincidentes
+def predict_class(sentence):
+    bow = bag_of_words(sentence)
+    res = model.predict(np.array([bow]))[0]
+    sorted_indexes = np.argsort(res)[::-1]  # Ordenar índices en orden descendente
+    categories = [classes[i] for i in sorted_indexes]
+    return categories
+
+# Obtener respuestas correspondientes a todos los patrones coincidentes
+def get_responses(tag, intents_json, pattern_indexes):
+    list_of_intents = intents_json['intents']
+    responses = []
+    for i in list_of_intents:
+        if i["tag"] == tag:
+            if 'responses' in i:
+                for index in pattern_indexes:
+                    if len(i['responses']) > index:
+                        responses.append(i['responses'][index])
+            break
+    return responses
+
+# Obtener todos los patrones de la categoría dada
+def get_patterns(tag, intents_json):
+    list_of_intents = intents_json['intents']
+    patterns = []
+    for i in list_of_intents:
+        if i["tag"] == tag and 'patterns' in i:
+            patterns.extend(i['patterns'])
+    return patterns
+
+# Ejecutamos el chat en bucle
+previous_responses = set()  # Almacena respuestas previas para evitar repeticiones
+
+while True:
+    message = input("")
+    categories = predict_class(message)
+
+    # Obtener todos los patrones de la categoría predicha
+    patterns = get_patterns(categories[0], intents)
+
+    # Filtrar respuestas previas y seleccionar una respuesta no repetida basada en los patrones
+    available_responses = []
+    for pattern in patterns:
+        responses = get_responses(categories[0], intents, [patterns.index(pattern)])
+        available_responses.extend([response for response in responses if response not in previous_responses])
+
+    if not available_responses:
+        # Si no hay respuestas nuevas basadas en los patrones, reciclar respuestas previas
+        available_responses = list(previous_responses)
+
+    selected_response = random.choice(available_responses)
+    previous_responses.add(selected_response)  # Agregar la respuesta a respuestas previas
+    print(selected_response)
